@@ -37,7 +37,9 @@
   --card: rgba(8, 8, 8, 0.82);
   --card-border: rgba(120, 120, 120, 0.34);
   --header-height: 180px;
-  --timeline-height: 240px;
+  --timeline-height: 440px;
+  --timeline-inner-height:      50%; /*change both!*/
+  --timeline-inner-height-calc: 0.5; /*change both!*/
   --circle-diameter: 26px;
 }
 
@@ -53,19 +55,28 @@ html, body {
 body {
   background: #000;
   isolation: isolate;
+  overflow-x: hidden;
 }
 
 header{
     width: 100%;
     height: var(--header-height);
-    border-bottom: solid 1px rgba(16, 16, 16, 0.1);
     font-family: 'DM-Sans', sans-serif;
     font-size: 20px;
     color: #ffffff;
+    position: sticky;
+    top: 0;
+    background: linear-gradient(
+      to bottom,
+      rgb(0, 0, 0) 60%,
+      rgba(255, 0, 0, 0) 100%
+  );
+    z-index: 1000;
 }
 
 header .inner{
     width: 50%; /* This is the inner width of the content inside of your header (80%, etc) */
+    top: 20px;
     height: 100%;
     display: block;
     margin: 0 auto;
@@ -83,19 +94,6 @@ header nav{
   padding: 12px 38px; /* nav pill size */
   width: 80%;
   margin-left: 40px; /* distance from the logo */
-}
-
-@media (max-width: 768px) {
-  header .logo--desktop {
-    display: none;
-  }
-  header .logo--mobile {
-    display: block;
-  }
-  header nav {
-    margin-left: 20px;
-    padding: 12px 24px;
-  }
 }
 
 header nav ul {
@@ -171,18 +169,32 @@ header .wip {
 
 /* Timeline container */
 .timeline {
-  width: 100%;
+  width: 100vw;
   height: var(--timeline-height);
   position: relative;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  touch-action: pan-x;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.timeline::-webkit-scrollbar {
+  display: none;
 }
 
 .timeline-inner {
   display: flex;
   gap: 18vw;
   width: fit-content;
-  height: 100%;
-  margin-left: 40vw;
-  transform: translateX(-50px); 
+  height: var(--timeline-inner-height);
+  margin-left: 30vw;
+  transform: translateX(300px); 
 }
 
 /* Horizontal line */
@@ -191,16 +203,17 @@ header .wip {
   position: absolute;
   top: calc(var(--timeline-height) / 2);
   left: 0;
-  right: 0;
+  right: -650px;
   height: 2px;
 
   background: linear-gradient(
     to right,       /* horizontal gradient */
-    #242424 28%,            /* start color */
-    yellow 40%,         /* middle color */
-    #396ace 55%          /* end color */
+    #131313 25vw,            /* start color */
+    yellow 40vw,         /* middle color */
+    #396ace 70vw,          /* end color */
+    #396ace 90vw,          /* end color */
+    #131313 100vw          /* end color */
   );
-
 }
 
 .circle {
@@ -208,7 +221,7 @@ header .wip {
   height: var(--circle-diameter);
   border-radius: 50%;
   position: absolute;
-  top: calc(var(--timeline-height) / 2 - (var(--circle-diameter) / 2));
+  top: calc(var(--timeline-height) / 2 * var(--timeline-inner-height-calc) - (var(--circle-diameter) / 2)); /* timeline height / 2 * timeline-inner percentage - circle diameter / 2 */
   z-index: 1;
   transition: all 0.3s ease;
 }
@@ -219,11 +232,10 @@ header .wip {
 }
 
 .circle-active:hover {
-  box-shadow: 0 60px 200px 40px var(--yellow); /* x offset, y offset, blur radius, color */
+  box-shadow: 0 10px 160px 40px var(--yellow); /* x offset, y offset, blur radius, color */
   width: calc(var(--circle-diameter) * 1.5);
   height: calc(var(--circle-diameter) * 1.5);
-  top: calc(var(--timeline-height) / 2 - (var(--circle-diameter) / 2) * 1.4);
-  transform: translateX(-7px);
+  transform: translateX(-7px) translateY(-7px);
 }
 
 .circle-inactive {
@@ -233,11 +245,10 @@ header .wip {
 
 .circle-inactive:hover {
   background: var(--blue);
-  box-shadow: 0 60px 200px 40px var(--blue); /* x offset, y offset, blur radius, color */
+  box-shadow: 0 10px 160px 40px var(--blue); /* x offset, y offset, blur radius, color */
   width: calc(var(--circle-diameter) * 1.5);
   height: calc(var(--circle-diameter) * 1.5);
-  top: calc(var(--timeline-height) / 2 - (var(--circle-diameter) / 2) * 1.4);
-  transform: translateX(-7px);
+  transform: translateX(-7px) translateY(-7px);
 }
 
 /* Noise texture */
@@ -305,33 +316,33 @@ a:active {
 .research-checks::before {
   content: "";
   position: absolute;
+  bottom: 10px;
   left: calc(var(--circle-diameter) / 2);
-  bottom: 5px;
   width: 1px;
-  height: calc(var(--timeline-height) / 2 - (var(--circle-diameter) / 2) - 5px);
+  height: calc(var(--timeline-height) / 2 * var(--timeline-inner-height-calc));
   background: rgb(110, 110, 110);
 }
 
 .research-checks {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  height: 150px;
+  position: absolute;
+  bottom: 0;
   color: #999999;
   font-size: 16px;
   font-weight: 200;
   list-style-image: url("assets/images/checklist_circle.webp");
+  margin-block-start: 0;
+  margin-block-end: 0;
 }
 
 .research-checks li {
   padding-left: 4px;
   margin-left: 8px;
-
 }
 
 .contributors {
   display: flex;
-  max-width: 60%;
+  min-width: 400px;
+  max-width: 80%;
   min-height: 79px;
   padding: 16px 16px;
   border: 1px solid var(--card-border);
@@ -394,4 +405,31 @@ a:active {
   font-weight: 200;
   line-height: 1.35;
   color: rgb(197, 197, 197);
+}
+
+@media (max-width: 768px) {
+  header .logo--desktop {
+    display: none;
+  }
+  header .logo--mobile {
+    display: block;
+  }
+  header nav {
+    margin-left: 20px;
+    padding: 12px 24px;
+  }
+  .join-notification {
+    margin-left: 6vw;
+  }
+
+  .timeline::before {
+  background: linear-gradient(
+    to right,       /* horizontal gradient */
+    #131313 10vw,            /* start color */
+    yellow 30vw,         /* middle color */
+    #396ace 60vw,          /* end color */
+    #396ace 99vw,          /* end color */
+    #131313 150vw          /* end color */
+    );
+  }
 }
