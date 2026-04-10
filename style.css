@@ -175,13 +175,21 @@ header .wip {
   overflow-x: auto;
   overflow-y: hidden;
   white-space: nowrap;
-  touch-action: pan-x;
+  touch-action: pan-y;
   display: flex;
   justify-content: center;
   align-items: center;
 
   scrollbar-width: none;
   -ms-overflow-style: none;
+
+  cursor: grab;
+  user-select: none;
+}
+
+.timeline:active {
+  cursor: grabbing;
+  user-select: none;
 }
 
 .timeline::-webkit-scrollbar {
@@ -226,29 +234,43 @@ header .wip {
   transition: all 0.3s ease;
 }
 
-.circle-active {
+.circle-in-progress {
   background: yellow;
   box-shadow: 0 30px 100px 20px var(--yellow); /* x offset, y offset, blur radius, color */
 }
 
-.circle-active:hover {
-  box-shadow: 0 10px 160px 40px var(--yellow); /* x offset, y offset, blur radius, color */
-  width: calc(var(--circle-diameter) * 1.5);
-  height: calc(var(--circle-diameter) * 1.5);
-  transform: translateX(-7px) translateY(-7px);
-}
-
-.circle-inactive {
+.circle-not-started {
   background: #000000;
   box-shadow: 0 30px 100px 20px var(--blue); /* x offset, y offset, blur radius, color */
 }
 
-.circle-inactive:hover {
-  background: var(--blue);
-  box-shadow: 0 10px 160px 40px var(--blue); /* x offset, y offset, blur radius, color */
+.circle:hover,
+.circle:active {
   width: calc(var(--circle-diameter) * 1.5);
   height: calc(var(--circle-diameter) * 1.5);
-  transform: translateX(-7px) translateY(-7px);
+  transform: translate(-7px, -7px);
+}
+
+/* PC hover behavior */
+@media (hover: hover) {
+  .circle-in-progress:hover {
+    box-shadow: 0 10px 160px 40px var(--yellow);
+  }
+
+  .circle-not-started:hover {
+    background: var(--blue);
+    box-shadow: 0 10px 180px 60px var(--blue);
+  }
+}
+
+/* mobile tap behavior */
+.circle-in-progress:active {
+  box-shadow: 0 10px 160px 40px var(--yellow);
+}
+
+.circle-not-started:active {
+  background: var(--blue);
+  box-shadow: 0 10px 180px 60px var(--blue);
 }
 
 /* Noise texture */
