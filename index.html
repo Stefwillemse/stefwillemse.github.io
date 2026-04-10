@@ -1,76 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" type="text/css" href="style.css" />
-  <title>Hardsurface</title>
-</head>
-<body>
-  <header>
-    <div class="inner">
-      <div class="logo">
-        <div>
-            <img src="assets/images/logo_navigation_anim.gif" class="logo logo--desktop" alt="hardsurface logo">
-            <img src="assets/images/logo_square_navigation.webp" class="logo logo--mobile" alt="hardsurface logo square">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>Hardsurface</title>
+  </head>
+  <body>
+    <header>
+      <div class="inner">
+        <div class="logo">
+          <div>
+              <img src="assets/images/logo_navigation_anim.gif" class="logo logo--desktop" alt="hardsurface logo">
+              <img src="assets/images/logo_square_navigation.webp" class="logo logo--mobile" alt="hardsurface logo square">
+          </div>
         </div>
-      </div>
 
-      <nav>
-        <ul>
-          <!-- Each of the below lines look complicated. There is a reason for this markup though!
-          <li> tag will be the container for the table.
-          <span> will be the part that centers the content inside it
-          <a> is the actual clickable part -->
-          <li><span class="guidelines">Guidelines</span><span class="wip">WIP</span></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-    
-  <div class="page"> 
-    <div class="timeline">
-      <div class="timeline-inner">
-        
-        <div class="item">
-          <h1>research phase</h1>
-          <div class="status"><span class="status-bold">status:</span> in progress</div>
-          <div class="status">sharing on <a href="https://youtube.com/@hardsurfaceXYZ">youtube.com/@hardsurfaceXYZ</a></div>
-          <div class="circle circle-active"></div>
-          <ul class="research-checks" aria-label="research checklist">
-            <li>Asset Build Guidelines</li>
-            <li>OpenUSD Asset Research</li>
-            <li>Example Assets</li>
+        <nav>
+          <ul>
+            <li><span class="guidelines">Guidelines</span><span class="wip">WIP</span></li>
           </ul>
-        </div>
+        </nav>
+      </div>
+    </header>
 
-        <div class="item">
-          <h1>invitational phase</h1>
-          <div class="status"><span class="status-bold">status:</span> not started</div>
-          <div class="circle circle-inactive"></div>
-        </div>
+      
+    <div class="page"> 
+      <div class="timeline">
+        <div class="timeline-inner">
+          
+          <div class="item">
+            <h1>research phase</h1>
+            <div class="status"><span class="status-bold">status:</span> in progress</div>
+            <div class="status">sharing on <a href="https://youtube.com/@hardsurfaceXYZ">youtube.com/@hardsurfaceXYZ</a></div>
+            <div class="circle circle-in-progress"></div>
+            <ul class="research-checks" aria-label="research checklist">
+              <li>Asset Build Guidelines</li>
+              <li>OpenUSD Asset Research</li>
+              <li>Example Assets</li>
+            </ul>
+          </div>
 
-        <div class="item">
-          <h1>submission phase</h1>
-          <div class="status"><span class="status-bold">status:</span> not started</div>
-          <div class="circle circle-inactive"></div>
-        </div>
+          <div class="item">
+            <h1>invitational phase</h1>
+            <div class="status"><span class="status-bold">status:</span> not started</div>
+            <div class="circle circle-not-started"></div>
+          </div>
 
+          <div class="item">
+            <h1>submission phase</h1>
+            <div class="status"><span class="status-bold">status:</span> not started</div>
+            <div class="circle circle-not-started"></div>
+          </div>
+
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="contributors">
-    <div class="join-notification">JOIN</div>
-    <div class ="contributors-text">
-      <h3>We are looking for contributors!</h3>
-      <p>Hardsurface aims to be a collaborative platform.  For the current phase, we are looking for modelers and surfacing artists to help develop the 
-  Asset Build Guidelines. These guidelines will serve as the basis for all future Hardsurface assets,. 
-  Similarly, we’re looking for TD’s with OpenUSD experience (Solaris, Maya or Python) to contribute to the OpenUSD Asset Research and HDA development.</p>
-      <p>Would you like to be part of it? Simply send us an e-mail stating your interests: <a href="mailto:info@hardsurface.xyz?subject=Contribution request&body=Hi there!">info@hardsurface.xyz</a></p>
+    <div class="contributors">
+      <div class="join-notification">JOIN</div>
+      <div class ="contributors-text">
+        <h3>We are looking for contributors!</h3>
+        <p>Hardsurface aims to be a collaborative platform.  For the current phase, we are looking for modelers and surfacing artists to help develop the 
+    Asset Build Guidelines. These guidelines will serve as the basis for all future Hardsurface assets,. 
+    Similarly, we’re looking for TD’s with OpenUSD experience (Solaris, Maya or Python) to contribute to the OpenUSD Asset Research and HDA development.</p>
+        <p>Would you like to be part of it? Simply send us an e-mail stating your interests: <a href="mailto:info@hardsurface.xyz?subject=Interest in contributing!">info@hardsurface.xyz</a></p>
+      </div>
     </div>
-  </div>
-
-</body>
+    <script type="text/javascript" src="js/script.js"></script>
+  </body>
 </html>
