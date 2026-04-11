@@ -26,3 +26,13 @@ container.addEventListener('mousemove', (e) => {
   const walk = (x - startX) * .6; // scroll speed multiplier
   container.scrollLeft = scrollLeft - walk;
 });
+
+const circles = document.querySelectorAll(
+  ".circle-in-progress, .circle-not-started"
+);
+
+circles.forEach(circle => {
+  circle.addEventListener("click", () => {
+    circle.classList.toggle("active");
+  });
+});
