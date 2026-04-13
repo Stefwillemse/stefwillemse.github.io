@@ -53,7 +53,12 @@ html, body {
 }
 
 body {
-  background: var(--bg);
+  /* background-color: var(--bg); */
+  background-color: black; /* fallback black background */
+  background-image: url("assets/images/background_ship_VOC_v011.jpg");
+  background-repeat: no-repeat; /* prevents repeating */
+  background-position: center center; /* centers the image */
+  background-size: auto;
   isolation: isolate;
   overflow-x: hidden;
 }
@@ -66,11 +71,11 @@ header{
     color: #ffffff;
     position: sticky;
     top: 0;
-    background: linear-gradient(
+    /* background: linear-gradient(
       to bottom,
       rgb(0, 0, 0) 60%,
       rgba(255, 0, 0, 0) 100%
-  );
+  ); */
     z-index: 1000;
 }
 
@@ -168,7 +173,7 @@ header .wip {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: black;
+  /* background: black; */
 }
 
 /* Timeline container */
