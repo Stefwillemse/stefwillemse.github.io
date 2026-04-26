@@ -55,7 +55,7 @@ html, body {
 body {
   /* background-color: var(--bg); */
   background-color: black; /* fallback black background */
-  background-image: url("assets/images/background_ship_VOC_v011.jpg");
+  /* background-image: url("assets/images/background_ship_VOC_v011.jpg"); */
   background-repeat: no-repeat; /* prevents repeating */
   background-position: center center; /* centers the image */
   background-size: auto;
